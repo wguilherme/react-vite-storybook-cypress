@@ -10,6 +10,7 @@ npx cypress open
 
 // add react-router-dom
 yarn add react-router-dom
+yarn add @types/react-router-dom
 
 // update main.tsx to basic router design:
 ```
@@ -19,3 +20,6 @@ yarn add react-router-dom
   </Routes>
 </BrowserRouter>
 ```
+
+// add miragejs
+yarn add -D miragejs
