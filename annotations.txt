@@ -1,5 +1,9 @@
-init vite with react-ts
+// init vite with react-ts
 npm init vite@latest vite-number-conversion -- --template react-ts
 
 // add storybook
 npx storybook init
+
+// add cypress
+yarn add cypress --dev
+npx cypress open
