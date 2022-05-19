@@ -10,6 +10,8 @@
     "build-storybook": "build-storybook"
   },
   "dependencies": {
+    "@types/axios": "^0.14.0",
+    "axios": "^0.27.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.3.0"
