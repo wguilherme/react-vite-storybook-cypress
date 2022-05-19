@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
+    "@types/react-router-dom": "^5.3.3",
     "@babel/core": "^7.17.12",
     "@storybook/addon-actions": "^6.5.0",
     "@storybook/addon-essentials": "^6.5.0",

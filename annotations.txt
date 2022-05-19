@@ -7,3 +7,15 @@ npx storybook init
 // add cypress
 yarn add cypress --dev
 npx cypress open
+
+// add react-router-dom
+yarn add react-router-dom
+
+// update main.tsx to basic router design:
+```
+<BrowserRouter>
+  <Routes>
+    <Route path="/" element={<App/>}/>
+  </Routes>
+</BrowserRouter>
+```
