@@ -1,5 +1,5 @@
-export function Button({label:string}){
+export function Button(props:any){
   return (
-    <button>{label}</button>
+    <button>{props.label || 'Click me'}</button>
   )
 }

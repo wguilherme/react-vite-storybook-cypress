@@ -1,6 +1,7 @@
 
 module.exports = {
   // clearMocks: true,
+  collectCoverage: false,
   testPathIgnorePatterns: ['/node_modules/', '/dist/', "/.next/", "/cypress/"],
   setupFilesAfterEnv: ["<rootDir>/src/tests/setup.ts"],
   coveragePathIgnorePatterns: [
@@ -9,8 +10,10 @@ module.exports = {
     "/cypress/",
   ],
   transform: {
-    "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
+    "^.+\\.tsx?$": "ts-jest",
+    "^.+\\.jsx?$": "babel-jest",
   },
+  testMatch: ["**/__tests__/**/*.ts?(x)", "**/?(*.)+(spec|test).ts?(x)"],
   testEnvironment: "jsdom",
   // coverageProvider: "v8",
 };
