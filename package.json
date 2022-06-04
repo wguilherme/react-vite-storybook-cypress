@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "test": "jest",
+    "test": "jest --silent --runInBand --watchAll",
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
