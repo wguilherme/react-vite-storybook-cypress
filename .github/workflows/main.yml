@@ -16,3 +16,4 @@ jobs:
           config-file: cypress.config.ts
           build: npm run build
           start: npm run dev
+          record: false
