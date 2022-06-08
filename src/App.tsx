@@ -1,5 +1,8 @@
 import { useEffect } from 'react'
 import { api } from './services/api'
+import { makeServer } from './services/mirage'
+
+if(process.env.NODE_ENV === 'development'){ makeServer() }
 
 function App() {
   useEffect(()=>{
