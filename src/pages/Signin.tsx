@@ -27,7 +27,6 @@ export function Signin() {
 
   const handleLogin: any = async (credentials: any) => {
     try {
-      setAuthenticated(true)
       setTimeout(() => {
         setAuthenticated(true)
       },2000)

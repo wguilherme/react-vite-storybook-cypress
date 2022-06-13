@@ -42,13 +42,10 @@ function Dashboard() {
               <Typography variant="subtitle1">projetos</Typography>
             </Paper>
           </Grid>
-
         ))}
       </Grid>
 
       <Box sx={{mt:5}}>
-
-
         <Typography variant="body1">Data from GraphQL</Typography>
       <List>
         {data?.characters?.results?.map((character:any, index:number)=>(
