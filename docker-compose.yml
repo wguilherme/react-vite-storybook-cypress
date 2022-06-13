@@ -1,7 +1,7 @@
 version: '3.8'
 
 services:
-  react-vite-boilerplate:
+  web:
     build: 
       context: ./
       dockerfile: Dockerfile
@@ -9,3 +9,32 @@ services:
       - .:/usr/react-vite-boilerplate
     ports:
       - '3000:3000'
+    expose:
+      - '3000'
+  # unit:
+  #   depends_on:
+  #     - web
+  #   build: 
+  #     context: ./
+  #     dockerfile: Dockerfile
+  #   command: npm test
+  e2e:
+    links:
+      - web
+    depends_on:
+      - web
+      # - unit
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    command: npm run cy:run
+    
+
+  # e2e:
+  #   depends_on:
+  #     - web
+  #   build: 
+  #     context: ./
+  #     dockerfile: Dockerfile.e2e
+    # command: npm run cy:run
+    
