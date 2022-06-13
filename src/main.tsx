@@ -12,6 +12,9 @@ import App from './App';
 import { LoggedUserProvider } from './contexts/User';
 import { store } from './store';
 // import './styles/setup.scss';
+import { ApolloProvider } from "@apollo/client";
+
+import client from "./services/apollo";
 
 const theme: any = createTheme({
   palette: {
@@ -30,11 +33,13 @@ const theme: any = createTheme({
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
+    <ApolloProvider client={client}>
       <LoggedUserProvider>
         <Provider store={store}>
           <App />
         </Provider>
       </LoggedUserProvider>
+      </ApolloProvider>
     </ThemeProvider>
   </React.StrictMode>,
   document.getElementById('root')

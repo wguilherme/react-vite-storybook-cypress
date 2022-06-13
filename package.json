@@ -29,6 +29,7 @@
     "react-router-dom": "^6.3.0"
   },
   "devDependencies": {
+    "@apollo/client": "^3.6.8",
     "@babel/core": "^7.18.5",
     "@babel/preset-env": "^7.18.2",
     "@babel/preset-react": "^7.17.12",
@@ -50,6 +51,7 @@
     "babel-jest": "^28.1.0",
     "babel-loader": "^8.2.5",
     "cypress": "^10.1.0",
+    "graphql": "^16.5.0",
     "jest": "^28.1.0",
     "jest-environment-jsdom": "^28.1.0",
     "jest-styled-components": "^7.0.8",
