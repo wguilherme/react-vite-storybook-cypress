@@ -1,6 +1,7 @@
+import {Typography} from '@mui/material'
 function App() { 
   return(
-    <h1>Routes</h1>
+    <Typography>oi</Typography>
   ) 
 }
 export default App
