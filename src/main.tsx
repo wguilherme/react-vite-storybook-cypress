@@ -1,4 +1,3 @@
-
 // font for @mui
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -6,12 +5,13 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { deepPurple } from '@mui/material/colors';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import App from './App'
-import UserList from './pages/users'
-import {QueryClient, QueryClientProvider} from 'react-query'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import App from './App';
+import { LoggedUserProvider } from './contexts/User';
+import { store } from './store';
+// import './styles/setup.scss';
 
 const theme: any = createTheme({
   palette: {
@@ -27,18 +27,15 @@ const theme: any = createTheme({
   }
 })
 
-const queryClient = new QueryClient
-ReactDOM.createRoot(document.getElementById('root')!).render(
+ReactDOM.render(
   <React.StrictMode>
-    <BrowserRouter>
-    <QueryClientProvider client={queryClient}>
     <ThemeProvider theme={theme}>
-    <Routes>
-      <Route path="/" element={<App/>}/>
-      <Route path="/users" element={<UserList/>}/>
-      </Routes>
+      <LoggedUserProvider>
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </LoggedUserProvider>
     </ThemeProvider>
-    </QueryClientProvider>
-    </BrowserRouter>
-  </React.StrictMode>
+  </React.StrictMode>,
+  document.getElementById('root')
 )
