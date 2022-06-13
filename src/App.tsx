@@ -15,7 +15,8 @@ import Goal from './pages/Goal';
 import Mvp from './pages/Mvp';
 import {Layout} from './components/template';
 import Login from './pages/Login';
-import Signup from './pages/Signup';
+import {Signup} from './pages/Signup';
+import {Signin} from './pages/Signin';
 
 
 import { LoggedUserContext } from './contexts/User'
@@ -28,9 +29,9 @@ function App() {
     <BrowserRouter>
       {!authenticated ? (
         <Routes>
-          <Route path="/" element={<Login />} />
+          <Route path="/signin" element={<Signin />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="*" element={<Navigate to="/" />} />
+          <Route path="*" element={<Navigate to="/signin" />} />
         </Routes>
       )
         : (<Routes>

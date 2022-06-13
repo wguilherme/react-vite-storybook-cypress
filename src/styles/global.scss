@@ -1,0 +1,72 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+  input::-ms-reveal,
+  input::-ms-clear {
+    display: none;
+  }
+}
+
+#root,
+#root>div+div {
+  height: 100%;
+}
+
+
+.MuiDataGrid-toolbarContainer {
+  gap: 1rem;
+  // border-bottom: 1px solid #E0E0E0;
+  padding-bottom: 1.5rem !important;
+}
+
+.MuiDataGrid-columnSeparator {
+  visibility: hidden;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+*::-webkit-scrollbar {
+  width: 0.4rem;
+  height: 0.4rem;
+}
+
+*::-webkit-scrollbar-track {
+  // -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+  background-color: #2e333727;
+}
+
+*::-webkit-scrollbar-thumb {
+  // background-color: rgba(0,0,0,.1);
+  // background-color:#62b6ff84;
+  background-color: #7986CA;
+}
+ 
+// *::-webkit-scrollbar {
+//   width: 0.4rem;
+// }
+
+// *::-webkit-scrollbar-track {
+//   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+// }
+
+// *::-webkit-scrollbar-thumb {
+//   background-color: rgba(0,0,0,.1);
+//   outline: 1px solid rgba(0,0,0,0.1);
+// }
+ 

@@ -17,6 +17,10 @@ Boilerplate com React, Typescript e Vite com testes Unitários, Integração e E
 
 ✅  Cypress
 
+✅  Formik
+
+✅  YUP
+
 ✅  Docker E2E testing
 
 ✅  React Query
@@ -40,6 +44,8 @@ Boilerplate com React, Typescript e Vite com testes Unitários, Integração e E
 ✅  Eslint/Pretiter + Lint Staged
 
 ✅  ECharts
+
+✅  Sass
 
 
 

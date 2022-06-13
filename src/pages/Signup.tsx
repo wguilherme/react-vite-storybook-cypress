@@ -1,5 +1,5 @@
 import Header from '../components/HeaderPage'
-export default function Signup() {
+export function Signup() {
   return (
     <Header title="Signup" />
   )

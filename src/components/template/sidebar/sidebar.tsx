@@ -3,10 +3,14 @@ import { Box, Drawer, Icon, List, ListItem, ListItemIcon, ListItemText, Tooltip,
 import { useDispatch, useSelector } from 'react-redux';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { toggle } from '../../../features/sidebar';
+import {LoggedUserContext} from '../../../contexts/User'
+import { useContext } from 'react';
 
 
 
 export function Sidebar(props: any) {
+
+  const {setAuthenticated} =  useContext(LoggedUserContext)
 
   const sidebar = useSelector((state: any) => state.sidebar)
   const dispatch = useDispatch()
@@ -46,6 +50,12 @@ export function Sidebar(props: any) {
     },
 
   ]
+
+  function handleLogout(){
+    setAuthenticated(false)
+    navigate('/login')
+  }
+
   return (
 
     <Drawer variant="permanent" anchor="left"  >
@@ -94,7 +104,7 @@ export function Sidebar(props: any) {
 
           <ListItem button
             data-cy="logout">
-            <ListItemText sx={{ color: 'primary.contrastText' }} hidden={!sidebar.expanded} primary="Sair da conta" />
+            <ListItemText onClick={handleLogout} sx={{ color: 'primary.contrastText' }} hidden={!sidebar.expanded} primary="Sair da conta" />
             <ListItemIcon sx={{ minWidth: '2rem' }}><ExitToApp sx={{ color: 'primary.light' }} /></ListItemIcon>
           </ListItem>
         </Box>

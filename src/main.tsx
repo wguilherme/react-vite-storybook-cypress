@@ -3,7 +3,7 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
-import { deepPurple } from '@mui/material/colors';
+import { deepPurple, indigo } from '@mui/material/colors';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -11,7 +11,7 @@ import { Provider } from 'react-redux';
 import App from './App';
 import { LoggedUserProvider } from './contexts/User';
 import { store } from './store';
-// import './styles/setup.scss';
+import './styles/global.scss';
 import { ApolloProvider } from "@apollo/client";
 
 import client from "./services/apollo";
@@ -19,7 +19,7 @@ import client from "./services/apollo";
 const theme: any = createTheme({
   palette: {
     // mode: 'dark',
-    primary: deepPurple
+    primary: indigo
   },
   typography: {
     fontFamily: 'Roboto',

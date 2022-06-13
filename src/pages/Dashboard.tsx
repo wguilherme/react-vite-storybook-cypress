@@ -14,15 +14,15 @@ function Dashboard() {
       count: 3
     },
     {
-      title: 'Goals',
+      title: 'MVPs',
       count: 2
     },
     {
-      title: 'Tasks',
+      title: 'Tarefas',
       count: 1
 
     }, {
-      title: 'MVPs',
+      title: 'Metas',
       count: 1
 
     }
