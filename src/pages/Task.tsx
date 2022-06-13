@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material'
 import Header from './../components/HeaderPage'
-export default function Task() {
+export function Task() {
   return (
     <Header title="Tasks" />
   )

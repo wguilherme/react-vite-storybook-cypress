@@ -7,16 +7,9 @@ import {
 } from "react-router-dom";
 
 import { useContext } from 'react'
-
-import Dashboard from './pages/Dashboard';
-import Task from './pages/Task';
-import Project from './pages/Project';
-import Goal from './pages/Goal';
-import Mvp from './pages/Mvp';
 import {Layout} from './components/template';
-import Login from './pages/Login';
-import {Signup} from './pages/Signup';
-import {Signin} from './pages/Signin';
+import {Dashboard,Task, Signup, Signin, Charts, Graphql, Project, Goal, Mvp} from './pages';
+import {  } from "./pages/Graphql";
 
 
 import { LoggedUserContext } from './contexts/User'
@@ -41,6 +34,8 @@ function App() {
             <Route path="/project" element={<Project />} />
             <Route path="/goal" element={<Goal />} />
             <Route path="/mvp" element={<Mvp />} />
+            <Route path="/graphql" element={<Graphql />} />
+            <Route path="/charts" element={<Charts />} />
 
             <Route path="*" element={<Navigate to="/" />} />
           </Route>
