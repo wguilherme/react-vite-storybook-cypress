@@ -1,1 +1,1 @@
-export * from './atoms/button'
+export * from './atom/button'
