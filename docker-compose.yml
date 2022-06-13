@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  react-vite-boilerplate:
+    build: 
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - .:/usr/react-vite-boilerplate
+    ports:
+      - '3000:3000'
