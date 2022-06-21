@@ -13,10 +13,12 @@ import {  } from "./pages/Graphql";
 
 
 import { LoggedUserContext } from './contexts/User'
+import { CryptoWatch } from "./pages/CryptoWatch";
 
 
 function App() {
-  const { authenticated } = useContext(LoggedUserContext)
+  // const { authenticated } = useContext(LoggedUserContext)
+  const authenticated = true
   console.log('is user authenticated', authenticated)
   return (
     <BrowserRouter>
@@ -36,6 +38,7 @@ function App() {
             <Route path="/mvp" element={<Mvp />} />
             <Route path="/graphql" element={<Graphql />} />
             <Route path="/charts" element={<Charts />} />
+            <Route path="/cryptowatch" element={<CryptoWatch />} />
 
             <Route path="*" element={<Navigate to="/" />} />
           </Route>

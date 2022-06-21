@@ -53,10 +53,16 @@ export function Sidebar (props: any) {
       path: '/graphql'
     },
     {
+      label: 'CryptoWatch',
+      icon: <Group color="primary.light" />,
+      path: '/cryptowatch'
+    },
+    {
       label: 'Charts',
       icon: <Group color="primary.light" />,
       path: '/charts'
     },
+ 
 
   ]
 

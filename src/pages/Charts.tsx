@@ -1,6 +1,5 @@
 
 import Header from './../components/HeaderPage'
-import echarts from 'echarts';
 import ReactECharts from 'echarts-for-react';
 
 export function Charts() {

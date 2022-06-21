@@ -25,7 +25,7 @@ export function Dashboard() {
     <>
       <Header title="Dashboard" />
       <Grid container gap={2}>
-        {mockData.map((item, index): any => (
+        {mockData?.map((item, index): any => (
           <Grid item xs>
             <Paper sx={{ p: 2, textAlign: 'center' }}>
               <Typography sx={{ fontWeight: 400, }} variant="h4">03</Typography>
