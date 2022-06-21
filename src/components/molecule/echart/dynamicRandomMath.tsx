@@ -5,16 +5,16 @@ import cloneDeep from 'lodash.clonedeep';
 export const DynamicEcharts: React.FC = () => {
   const DEFAULT_OPTION = {
     title: {
-      text:'Hello Echarts-for-react.',
+      text:'',
     },
     tooltip: {
       trigger: 'axis'
     },
     legend: {
-      data:['最新成交价', '预购队列']
+      data:['Preço', 'Compras']
     },
     toolbox: {
-      show: true,
+      show: false,
       feature: {
         dataView: {readOnly: false},
         restore: {},
@@ -36,9 +36,9 @@ export const DynamicEcharts: React.FC = () => {
       show: false,
       min: 0,
       max: 1000,
-      color: ['#BE002F', '#F20C00', '#F00056', '#FF2D51', '#FF2121', '#FF4C00', '#FF7500',
-        '#FF8936', '#FFA400', '#F0C239', '#FFF143', '#FAFF72', '#C9DD22', '#AFDD22',
-        '#9ED900', '#00E500', '#0EB83A', '#0AA344', '#0C8918', '#057748', '#177CB0']
+      color: ['#FFEB3C', '#C83E4D', '#FFC108', '#F4B860', '#C83E4D', '#FFEB3C', '#FFEB3C',
+        '#303F9F', '#303F9F', '#303F9F', '#303F9F', '#303F9F', '#303F9F', '#303F9F',
+        '#9ED900', '#00E500', '#57A773', '#0AA344', '#69DC9E', '#00D243', '#167045']
     },
     xAxis: [
       {
@@ -72,7 +72,7 @@ export const DynamicEcharts: React.FC = () => {
       {
         type: 'value',
         scale: true,
-        name: '价格',
+        name: 'Preço',
         max: 20,
         min: 0,
         boundaryGap: [0.2, 0.2]
@@ -80,7 +80,7 @@ export const DynamicEcharts: React.FC = () => {
       {
         type: 'value',
         scale: true,
-        name: '预购量',
+        name: 'Compras',
         max: 1200,
         min: 0,
         boundaryGap: [0.2, 0.2]
@@ -88,7 +88,7 @@ export const DynamicEcharts: React.FC = () => {
     ],
     series: [
       {
-        name:'预购队列',
+        name:'Compras',
         type:'bar',
         xAxisIndex: 1,
         yAxisIndex: 1,
@@ -114,14 +114,14 @@ export const DynamicEcharts: React.FC = () => {
         })()
       },
       {
-        name:'最新成交价',
+        name:'Preço',
         type:'line',
         data:(function (){
           let res:any = [];
           let len:any = 0;
           while (len < 50) {
             const mathRandom:any = ((Math.random()*10 + 5).toFixed(1))
-            res.push(mathRandom)
+            res.push(mathRandom-0)
             len++;
           }
           return res;
@@ -137,7 +137,7 @@ export const DynamicEcharts: React.FC = () => {
   function fetchNewData() {
     const axisData = (new Date()).toLocaleTimeString().replace(/^\D*/,'');
     const newOption = cloneDeep(option); // immutable
-    newOption.title.text = 'Hello Echarts-for-react.' + new Date().getSeconds();
+    newOption.title.text = '' + new Date().getSeconds();
     const data0 = newOption.series[0].data;
     const data1 = newOption.series[1].data;
     data0.shift();
