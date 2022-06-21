@@ -1,12 +1,14 @@
 import useWebSocket from 'react-use-websocket';
 import Header from './../components/HeaderPage'
 import {useState, useEffect} from 'react'
-import {Box, Typography} from '@mui/material'
+import {Box, Grid, Typography} from '@mui/material'
 import { fetchGecko } from '../services/crypto/coingecko/fetchGecko';
 import { formatDate } from '../util/formatDate';
 import Echarts, {EChartsOption} from 'echarts-for-react';
 import * as echarts from 'echarts'
 import { DynamicEcharts } from '../components/molecule/echart/dynamicRandomMath';
+import { EchartsRadar } from '../components/molecule/echart/radar';
+import { EchartRadar5Indicators } from '../components/molecule/echart/radar5Indicators';
 
 
 const etheriumGeckoUrl = 'https://api.coingecko.com/api/v3/coins/ethereum/market_chart?vs_currency=usd&days=10&interval=3d'
@@ -14,8 +16,9 @@ const bitcoinGeckoUrl = 'https://api.coingecko.com/api/v3/coins/bitcoin/market_c
 const bitcoinTetherUrl = 'https://api.coingecko.com/api/v3/coins/tether/market_chart?vs_currency=usd&days=10&interval=3d'
 
 export function CryptoWatch(){
-  const [data, setData] = useState<any>(null)
-  const [symbol, setSymbol] = useState<any>("eosusdt")
+  const [binanceWs, setBinanceWs] = useState<any>(null)
+  const [binanceWs2, setBinanceWs2] = useState<any>(null)
+  const [binanceWs3, setBinanceWs3] = useState<any>(null)
 
   const [etheriumHistory, setEtheriumHistory] = useState<any>([])
   const [bitcoinHistory, setBitcoinHistory] = useState<any>([])
@@ -56,19 +59,42 @@ export function CryptoWatch(){
     fetchGeckoCoinsHistory()
   },[])
 
+  
+  const { lastJsonMessage: lastJsonMessage3 } = useWebSocket(`wss://stream.binance.com:9443/ws/dogeusdt@ticker`, {
+    onMessage: () => {
+      if (lastJsonMessage3) {
+        setBinanceWs3(lastJsonMessage3)
+      }
+    },
+    onError: (event:any) => console.log(event.message),
+    shouldReconnect: () => true,
+    reconnectInterval: 3000
 
-  // const { lastJsonMessage } = useWebSocket(`wss://stream.binance.com:9443/ws/${symbol}@ticker`, {
-  //   onMessage: () => {
-  //     if (lastJsonMessage) {
-  //       console.log('get', lastJsonMessage);
-  //       setData(lastJsonMessage)
-  //     }
-  //   },
-  //   onError: (event:any) => alert(event.message),
-  //   shouldReconnect: () => true,
-  //   reconnectInterval: 3000
+  })
+  const { lastJsonMessage: lastJsonMessage2 } = useWebSocket(`wss://stream.binance.com:9443/ws/solusdt@ticker`, {
+    onMessage: () => {
+      if (lastJsonMessage2) {
+        setBinanceWs2(lastJsonMessage2)
+      }
+    },
+    onError: (event:any) => console.log(event.message),
+    shouldReconnect: () => true,
+    reconnectInterval: 3000
 
-  // })
+  })
+
+  const { lastJsonMessage } = useWebSocket(`wss://stream.binance.com:9443/ws/btcusdt@ticker`, {
+    onMessage: () => {
+      if (lastJsonMessage) {
+
+        setBinanceWs(lastJsonMessage)
+      }
+    },
+    onError: (event:any) => console.log(event.message),
+    shouldReconnect: () => true,
+    reconnectInterval: 3000
+
+  })
 
   const historyOptions: EChartsOption = {
 
@@ -142,31 +168,42 @@ export function CryptoWatch(){
 
   };
 
-  console.log('ehteriumData', etheriumHistory.slice(0), bitcoinHistory.slice(0))
+
   if(!etheriumHistory && !bitcoinHistory) return <h2>Carregando...</h2>
   else return(
 
     <>
-    <Header title="Charts" />
+    <Header title="Charts" />   
 
-    <Typography variant="h5" mb={5}>Etherium, Bitcoin and Tether - Dados coletados via HTTP consumindo a API do CoinGecko</Typography>
+    
+    <Grid container spacing={6}>
+      <Grid item xs={8}>
+      <Typography variant="h5" mb={5}>Etherium, Bitcoin and Tether - Dados coletados via HTTP consumindo a API do CoinGecko</Typography>
+        <Echarts style={{ height: 400 }} option={historyOptions} />
+      </Grid>
+      <Grid item xs={4}>
+      <Typography variant="h5" mb={5}>Gráfico Radar - 3 indicativos</Typography>
+        <EchartsRadar/>
+      </Grid>
+    </Grid>
 
-    <Echarts option={historyOptions} />
 
-
-    <Typography variant="h5" mt={10} mb={5}>Gráfico dinâmico realtime com dados aleatórios</Typography>
+    <Typography variant="h5" mt={5} mb={5}>Gráfico dinâmico realtime com dados aleatórios</Typography>
 
     <DynamicEcharts/>
 
-    {/* <Box>
-      <Typography>
-        Métricas
-      </Typography>
 
-      <p>{data?.c}</p>
-      <p>{data?.P}</p>
+    <Typography variant="h5" mt={5} mb={5}>Gráfico em tempo real consumindo Websocket da Binance</Typography>
+    <Box>
 
-    </Box> */}
+
+     {JSON.stringify(binanceWs, null, 2)}
+     {JSON.stringify(binanceWs2, null, 2)}
+     {JSON.stringify(binanceWs3, null, 2)}
+
+    <EchartRadar5Indicators indicator1={binanceWs} indicator2={binanceWs2} indicator3={binanceWs3}/>
+
+    </Box>
     </>
 
     
