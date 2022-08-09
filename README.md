@@ -4,7 +4,8 @@
 Boilerplate com React, Typescript e Vite com testes Unitários, Integração e E2E. Testes dockerizados e automação para Github Actions.
 
 
-## Other Common Github Profile Sections
+## Tech Stack
+
 ✅  ReactJS
 
 ✅  Typescript
